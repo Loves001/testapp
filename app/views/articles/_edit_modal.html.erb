@@ -1,0 +1,21 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="edit-modal-<%= article.id %>">Edit Article</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <%=  form_with(model: article, local: false, turbo: false) do |f| %>
+        <%= f.text_field :id, hidden: true%>
+        <%= f.label :title %>
+        <%= f.text_field :title, id: "edit-title" %>
+        <%= f.label :description %>
+        <%= f.text_area :description, id: "edit-description" %>
+        <%= f.submit "Update Article" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+  

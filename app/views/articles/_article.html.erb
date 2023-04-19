@@ -1,0 +1,37 @@
+<div class="col-xs-8 col-xs-offset-2" id="new_article">
+   <div class="well well-lg">
+      <% if article %>
+  <div class="article-title">
+    <%= link_to article.title, article_path(article.id) %>
+  </div>
+  <div class="article-body">
+    <%= truncate(article.description, length: 100) %>
+  </div>
+<% else %>
+  <div class="article-title">
+    No article found.
+  </div>
+<% end %>
+         <div class="article-meta-details">
+         <small> Created by: <%= article.user.username if article.user %>
+            <% if (@created_at != nil) then %>
+                 <%= time_ago_in_words(article.created_at) %> ago,
+            <% end %>
+            <% if (@updated_at != nil) then %>
+                 last updated: <%= time_ago_in_words(article.updated_at) %> ago
+            <% end %>
+                  </small>
+         </div>
+      </div>
+      <% if user_signed_in? && (current_user == article.user || current_user.admin?)%>
+         <div class = "article-actions">
+            <%= link_to "Edit this Article", edit_article_path(article), class: "btn btn-xs btn-info" %>
+            <%= link_to "View this Article", article_path(article), class: "btn btn-xs btn-warning" %>
+            <%= button_to "Delete this Article", article_path(article), method: :delete,
+                                               form: { data: { turbo_confirm: 'Are you sure?' } },
+                                               class: "btn btn-xs btn-danger" %>
+         </div>
+         <% end %>
+      </div>
+</div>
+

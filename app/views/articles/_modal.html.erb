@@ -1,0 +1,42 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"><i><b>Create an Article</b></i></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+      <div class="modal-body">
+        <div class='row'>
+          <div class='col-md-15'>
+              <%= form_with(model: Article.new, local: false, turbo: false) do |f| %>
+                <div class='form-group'>
+                  <div class="control-label col-sm-2">
+                    <%= f.label :title %> 
+                  </div>
+                  <div class="col-sm-9">
+                    <%= f.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+                  </div>
+                </div>
+
+                <div class='form-group'>
+                  <div class="control-label col-sm-2">
+                      <%= f.label :description %> 
+                  </div>
+                    <div class="col-sm-9">
+                      <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Body of the article" %>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10" href="#">
+                        <%= f.submit class: "btn btn-warning btn-lg" %>
+                    </div>
+                  </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

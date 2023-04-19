@@ -1,0 +1,11 @@
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+    New Article
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <%= render 'modal' %>
+</div>
+        
+<div id="articles">
+    <%= render 'articles', obj: @articles %>
+</div>
